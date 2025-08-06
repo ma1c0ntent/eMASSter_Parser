@@ -1,0 +1,40 @@
+{
+    "filePaths": {
+        "excelSource": "data\\imports\\eMASSterOutput.xlsx",
+        "csvFallback": "data\\imports\\SCC_Output_Data_Production.csv",
+        "benchmarksLookup": "data\\database\\benchmarks_fixed.csv",
+        "outputDirectory": "data\\reports",
+        "logDirectory": "data\\logs"
+    },
+    "excelSettings": {
+        "worksheetName": "Checklist Details",
+        "statusFilter": "Open"
+    },
+    "outputSettings": {
+        "includeTimestamp": true,
+        "outputFormats": ["CSV", "JSON"],
+        "maxTopVulnerabilities": 10
+    },
+    "logging": {
+        "logLevel": "INFO",
+        "logToFile": true,
+        "logToConsole": true,
+        "maxLogFileSizeMB": 10,
+        "maxLogFiles": 5
+    },
+    "performance": {
+        "chunkSize": 5000,
+        "enableMemoryOptimization": true,
+        "enableProgressReporting": false
+    },
+    "dataGeneration": {
+        "targetUniqueVulnerabilities": 150,
+        "targetTotalRecords": 5000,
+        "enableRealisticDistribution": true,
+        "severityDistribution": {
+            "high": 0.10,
+            "medium": 0.70,
+            "low": 0.20
+        }
+    }
+} 
