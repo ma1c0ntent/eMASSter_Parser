@@ -286,7 +286,7 @@ $targetRecords = $config.dataGeneration.targetTotalRecords
 $currentRecord = 0
 
 # Normalize weights to ensure they sum to 1.0 for proper distribution
-$totalWeight = ($realVulnerabilities | Measure-Object -Property Weight -Sum).Sum
+$totalWeight = ($realVulnerabilities | ForEach-Object { $_.Weight } | Measure-Object -Sum).Sum
 Write-Host "Total weight before normalization: $totalWeight" -ForegroundColor Yellow
 
 # Normalize weights
@@ -294,7 +294,7 @@ foreach ($vuln in $realVulnerabilities) {
     $vuln.Weight = $vuln.Weight / $totalWeight
 }
 
-$totalWeightAfter = ($realVulnerabilities | Measure-Object -Property Weight -Sum).Sum
+$totalWeightAfter = ($realVulnerabilities | ForEach-Object { $_.Weight } | Measure-Object -Sum).Sum
 Write-Host "Total weight after normalization: $totalWeightAfter" -ForegroundColor Yellow
 
 Write-Host "Calculating vulnerability distribution based on weights..." -ForegroundColor Yellow
