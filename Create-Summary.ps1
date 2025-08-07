@@ -153,6 +153,18 @@ function Get-OperatingSystem {
     elseif ($stigText -match "Ubuntu (\d+)") {
         return "Ubuntu $($matches[1])"
     }
+    elseif ($stigText -match "VMware vSphere (\d+) {
+        return "VMware vSphere $($matches[1])"
+    }
+    elseif ($stigText -match "VMware ESXi (\d+)") {
+        return "VMware ESXi $($matches[1])"
+    }
+    elseif ($stigText -match "Oracle Linux (\d+)" {
+        return "Oracle Linux $($matches[1])"
+    }
+    elseif ($stigText -match "Cisco IOS (\w+)" {
+        return "Cisco IOS"
+    }
     else {
         return $stigText
     }
@@ -500,4 +512,5 @@ finally {
     if ($logger -and $logger.LogToFile -and $logger.LogFile) {
         Write-Log "Script execution completed. Log file: $($logger.LogFile)" -Level "INFO" -Component "Main"
     }
+
 } 
